@@ -8,9 +8,9 @@ This is a simple and browser-based mesh viewer. The viewer supports two differen
 
 Loading a single mesh:
     
-    http://localhost:8000/poly_animation.html?name=sequence/00001352&mode=mesh
+    http://localhost:8000/index.html?name=sequence/00001352&mode=mesh
 
 
 Loading a sequence of meshes:
 
-    http://localhost:8000/poly_animation.html?name=scenes/highway_01&mode=meta
+    http://localhost:8000/index.html?name=scenes/highway_01&mode=meta
