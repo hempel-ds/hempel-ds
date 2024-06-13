@@ -50,7 +50,8 @@ function animate(viewer, delay, type, meshes, start, end, step=0) {
     
     // just change the source of the viewer to display a new mesh
     const mesh = meshes[step % meshes.length];
-    viewer.src = mesh;
+    viewer.setAttribute("src", mesh);
+    #viewer.src = mesh;
 
     if(meshes.length == 1) {
         // there is only a single element to show, no need to animate
