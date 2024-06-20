@@ -87,7 +87,7 @@ class Animation {
     
         if(this.meshes.length == 1) {
 	    // there is only a single element to show, no need to animate
-            this.viewer.src = mesh;
+            this.setMesh(mesh);
 	    return;
         }
         
@@ -99,6 +99,10 @@ class Animation {
                 setTimeout(that.nextImage, 1000 * that.delay, that);
             });
         
+        this.setMesh(mesh);
+    }
+    
+    setMesh(mesh) {
         this.viewer.src = mesh;
     }
     
@@ -116,12 +120,33 @@ class Animation {
 };
 
 
+function getViewportSize() {
+    let width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    let height = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    
+    return [width, height];
+}
+
+
+function fitViewerToViewport() {
+    var viewer = getPolyViewer();
+    const dims = getViewportSize();
+    
+    viewer.style.width = dims[0] + "px";
+    viewer.style.height = dims[1] + "px";
+}
+
+
 $(document).ready(function() {
     var viewer = getPolyViewer();
     const name = getObjectName();
     const mode = getPresentationMode();
     const configurationDocument = name + ".json";
     
+    // maximize the viewer and update it if the viewport changes!
+    fitViewerToViewport();
+    window.addEventListener("resize", fitViewerToViewport);
+
     if(mode == MODE_META) {
         // Meshes are managed within a configuration file.
         
