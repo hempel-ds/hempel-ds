@@ -14,3 +14,8 @@ Loading a single mesh:
 Loading a sequence of meshes:
 
     http://localhost:8000/index.html?name=scenes/highway_01&mode=meta
+
+
+Loading a single point cloud:
+
+    http://localhost:8000/index.html?name=segmented/color_000062456737&mode=cloud
